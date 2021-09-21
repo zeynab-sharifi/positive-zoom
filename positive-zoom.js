@@ -36,11 +36,33 @@
                     imgZoom.style.backgroundImage = `url(${ele.src})`
                 }
             })
+            //zoom 
+            imgZoom.addEventListener('mouseenter', function(){
+                this.style.backgroundSize = '250%';
+            })
+            //Mouse address in zoom class
+            imgZoom.addEventListener('mousemove', function(e){
+                let dimentions = this.getBoundingClientRect()
+
+                let x = e.clientX-dimentions.left
+                let y = e.clientY-dimentions.top
+
+                x = Math.round(100/(dimentions.width/x));
+                y = Math.round(100/(dimentions.height/y));
+
+                this.style.backgroundPosition =`${x}% ${y}%`
+            })
+            //Mouse out of zoom range
+            imgZoom.addEventListener('mouseleave',function(){
+                this.style.backgroundSize = 'cover';
+                this.style.backgroundPosition = 'center'
+            })
         }
     })
+    
 
     //To avoid interference between library
-    
+
     if(typeof(positiveZoom) == 'undefined'){
         window.positiveZoom = defineLibrary();
     }else{
