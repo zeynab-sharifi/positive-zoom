@@ -26,6 +26,8 @@
 }
 .zoom-image{
     flex: 1;
-    background: cover no-repeat center;
-    margin: 5px;  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 15px;  
 }
